@@ -1,6 +1,6 @@
 {
-	shareDrag: true,
-	studyDeck : ["Brown%20and%20cream%20sofa%20with%20red%20pillows.JPG",
+	"shareDrag": true,
+	"studyDeck" : ["Brown%20and%20cream%20sofa%20with%20red%20pillows.JPG",
         "Crowded%20table.JPG",
         "DC%20study%202.jpg",
         "DC%20study%202a.jpg",
@@ -49,7 +49,7 @@
         "studying%20through%20glass.jpeg",
         "table%20focus%20-%20davidson%20hall.jpeg",
         "wall%20tv.JPG"],
-	diningDeck : ["A%20Hokie%20Passport%20transaction.JPG",
+	"diningDeck" : ["A%20Hokie%20Passport%20transaction.JPG",
         "Booth%20seat%20@%20red%20robin.jpg",
         "Caf%20Radford%20University%20Drinks.JPG",
         "Condiment%20stand%20D2.JPG",

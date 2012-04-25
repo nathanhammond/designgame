@@ -39,7 +39,10 @@
   <script>
     var images = [];
 	console.log('before getJSON');
-	$.getJSON('init.json', function(data) {
+	$.ajax({
+	  url: 'init.json',
+	  dataType: 'json',
+	  success: function(data) {
 		console.log('got callback from loaded json');
 		for (var i = 0; i < data.diningDeck.length; i++) {
 	      images.push(new Image());
@@ -53,7 +56,12 @@
 
 	      $('#container').append(images[i]);
 	    }
+	  },
+	  error: function(data){
+		console.log(arguments);
+	  }
 	});
+	// $.getJSON(, );
     
     
     $("#container > img").draggable({
