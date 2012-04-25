@@ -4,8 +4,8 @@ var connect = require('connect');
 
 var server = http.createServer(
 		connect()
-			.use(connect.static('../client'))
-			.use(connect.directory('../client'))
+			.use(connect.static('client'))
+			.use(connect.directory('client'))
 	);
 
 var io = require('socket.io').listen(server);
