@@ -1,0 +1,9 @@
+{
+	"name": "DesignGameStudy",
+	"version": "0.0.1",
+	"dependencies": {
+		"connect":	"2.1.3",
+		"socket.io":	"0.8.7"
+	},
+	"main": "server"
+}
