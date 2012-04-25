@@ -114,7 +114,7 @@
       var data = {
         imgid: ui.helper.attr("id"),
         eventtype: "drag",
-        position: {left: ui.offset.left, top: ui.offset.top},
+        position: {left: ui.offset.left, top: ui.offset.top, z:ui.helper.css("zIndex")},
         related: false
       };
       socket.emit('msg', data);
@@ -126,7 +126,7 @@
       var data = {
         imgid: ui.helper.attr("id"),
         eventtype: "drop",
-        position: {left: ui.offset.left, top: ui.offset.top},
+        position: {left: ui.offset.left, top: ui.offset.top, z:ui.helper.css("zIndex")},
         related: ui.draggable.parent().attr("id")
       };
       socket.emit('msg', data);
@@ -134,12 +134,38 @@
     
     function onMessage(message) {
       // Move the picture.
-      console.log(arguments);
+      // console.log(arguments);
+      // debugger;
+      if (message.eventtype == "drag") {
+        var dragged = $("#"+message.imgid);
+        var newtop = message.position.top - dragged.parent().offset().top;
+        var newleft = message.position.left - dragged.parent().offset().left;
+        dragged.css({top:newtop,left:newleft,zIndex:message.position.z});
+        // console.log($("#"+message.imgid));
+      }
+      else {
+            var dropped = $("#"+message.imgid);
+			$("#"+message.related).append(dropped);
+			var newtop = message.position.top-dropped.parent().offset().top;
+			var newleft = message.position.left-dropped.parent().offset().left;
+              dropped.css({top:newtop,left:newleft,zIndex:message.position.z});
+      //         setTimeout(function() {
+      //           $("#"+message.imgid).draggable('destroy'); 
+      // 
+      //           $("#"+message.imgid).draggable({
+      //             stack: "img",
+      //             drag: $.throttle(100, sendDragMessage),
+      //             snap: false,
+      //             snapmode: "outer"
+      //           });
+      //         },1);
+      }
     }
 
     var socket = io.connect('http://localhost:8080');
     socket.on('msg', function (data) {
-      console.log(data);
+      onMessage(data);
+      // console.log(data);
       // TODO: Do stuff.
     });
     
