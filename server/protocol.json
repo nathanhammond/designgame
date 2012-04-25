@@ -1,0 +1,15 @@
+{
+    imgid: "img7",
+    eventtype: "drop|move",
+    position: {left: 0, top: 0},
+    related: elem
+}
+
+{
+    id:,
+    position:{left,top},
+}
+{
+    id:,
+    newParent:
+}

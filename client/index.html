@@ -1,0 +1,149 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Design Game Study</title>
+
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="_css/style.css">
+  <link rel="stylesheet" href="_css/screen.css">
+  <script src="_js/modernizr-2.5.3.min.js"></script>
+  <script src="http://localhost:8080/socket.io/socket.io.js"></script>
+</head>
+<body>
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+
+  <h1>Design Game Study</h1>
+
+  <div id="container">
+    <section id="board">
+    </section>
+  </div>
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+  <script>window.jQuery || document.write('<script src="_js/jquery.min.js"><\/script>')</script>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
+  <script>window.jQuery.ui || document.write('<script src="_js/jquery-ui.min.js"><\/script>')</script>
+  <script src="_js/jquery.ba-throttle-debounce.min.js"></script>
+  
+
+  <script>
+    var images = [];
+    for (var i = 0; i < 24; i++) {
+      images.push(new Image());
+      images[i].src = "";
+      images[i].width = "50";
+      images[i].height = "50";
+      images[i].style.top = Math.floor(Math.random() * 98) + 150 + "px";
+      images[i].style.left = Math.floor(Math.random() * 800) + "px";
+      images[i].id = "img"+i;
+      
+      $('#container').append(images[i]);
+    }
+    
+    $("#container > img").draggable({
+      stack: "img",
+      drag: $.throttle(100, sendDragMessage),
+      snap: false,
+      snapmode: "outer"
+    });
+    
+    $("#board").droppable({
+      tolerance: "fit",
+      greedy: true,
+      drop: function(event, ui) {
+        // Move the element into the "board" parent container.
+        var origin = $("#board").offset();
+        $("#board").append(ui.draggable);
+
+        var newleft = ui.offset.left - origin.left;
+        var newtop = ui.offset.top - origin.top;
+        sendDropMessage(event, ui);
+        ui.draggable.css({top: newtop, left: newleft});
+        
+        // Remove the current event. Workaround bug #8269.
+        setTimeout(function() {
+          ui.draggable.draggable('destroy'); 
+
+          ui.draggable.draggable({
+            containment: "#container",
+            snap: false,
+            snapmode: "outer"
+          });
+        },1);
+      }
+    });
+    
+    $("#container").droppable({
+      tolerance: "fit",
+      drop: function(event, ui) {
+        // Move the element into the "board" parent container.
+        var origin = $("#container").offset();
+        $("#container").append(ui.draggable);
+
+        var newleft = ui.offset.left - origin.left;
+        var newtop = ui.offset.top - origin.top;
+        sendDropMessage(event, ui);
+        ui.draggable.css({top: newtop, left: newleft});
+        
+        // Remove the current event. Workaround bug #8269.
+        setTimeout(function() {
+          ui.draggable.draggable('destroy'); 
+
+          ui.draggable.draggable({
+            stack: "img",
+            drag: $.throttle(100, sendDragMessage),
+            snap: false,
+            snapmode: "outer"
+          });
+        },1);
+      }      
+    });
+    
+    function sendDragMessage(event, ui) {
+      // Send message to server.
+      var data = {
+        imgid: ui.helper.attr("id"),
+        eventtype: "drag",
+        position: {left: ui.offset.left, top: ui.offset.top},
+        related: false
+      };
+      socket.emit('msg', data);
+    }
+    
+    function sendDropMessage(event, ui) {
+      // Send message to server.
+      
+      var data = {
+        imgid: ui.helper.attr("id"),
+        eventtype: "drop",
+        position: {left: ui.offset.left, top: ui.offset.top},
+        related: ui.draggable.parent().attr("id")
+      };
+      socket.emit('msg', data);
+    }
+    
+    function onMessage(message) {
+      // Move the picture.
+      console.log(arguments);
+    }
+
+    var socket = io.connect('http://localhost:8080');
+    socket.on('msg', function (data) {
+      console.log(data);
+      // TODO: Do stuff.
+    });
+    
+    </script>
+
+</body>
+</html>
