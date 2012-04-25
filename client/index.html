@@ -20,8 +20,6 @@
        chromium.org/developers/how-tos/chrome-frame-getting-started -->
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 
-  <h1>Design Game Study</h1>
-
   <div id="container">
     <section id="board">
     </section>
@@ -38,36 +36,7 @@
 
   <script>
     var images = [];
-	$.ajax({
-	  url: 'init.json',
-	  dataType: 'json',
-	  success: function(data) {
-		for (var i = 0; i < data.diningDeck.length; i++) {
-	      images.push(new Image());
-	      images[i].src = "_img/"+data.diningDeck[i];
-	      images[i].width = "220";
-	      images[i].height = "165";
-	      images[i].style.top = Math.floor(Math.random() * 98) + 450 + "px";
-	      images[i].style.left = Math.floor(Math.random() * 1200) + "px";
-	      images[i].id = "img"+i;
-
-	      $('#container').append(images[i]);
-	    }
-		$("#container > img").draggable({
-	      stack: "img",
-	      drag: $.throttle(100, sendDragMessage),
-	      snap: false,
-	      snapmode: "outer"
-	    });
-		console.log("completed img load");
-	  },
-	  error: function(data){
-		console.log(arguments);
-	  }
-	});
-    
-    
-    
+    var zindex = 0;
     
     $("#board").droppable({
       tolerance: "fit",
@@ -88,6 +57,7 @@
 
           ui.draggable.draggable({
             containment: "#container",
+            drag: $.throttle(100, sendDragMessage),
             snap: false,
             snapmode: "outer"
           });
@@ -98,7 +68,7 @@
     $("#container").droppable({
       tolerance: "fit",
       drop: function(event, ui) {
-        // Move the element into the "board" parent container.
+        // Move the element off of the board.
         var origin = $("#container").offset();
         $("#container").append(ui.draggable);
 
@@ -112,7 +82,6 @@
           ui.draggable.draggable('destroy'); 
 
           ui.draggable.draggable({
-            stack: "img",
             drag: $.throttle(100, sendDragMessage),
             snap: false,
             snapmode: "outer"
@@ -134,7 +103,6 @@
     
     function sendDropMessage(event, ui) {
       // Send message to server.
-      
       var data = {
         imgid: ui.helper.attr("id"),
         eventtype: "drop",
@@ -146,41 +114,69 @@
     
     function onMessage(message) {
       // Move the picture.
-      // console.log(arguments);
-      // debugger;
       if (message.eventtype == "drag") {
         var dragged = $("#"+message.imgid);
         var newtop = message.position.top - dragged.parent().offset().top;
         var newleft = message.position.left - dragged.parent().offset().left;
         dragged.css({top:newtop,left:newleft,zIndex:message.position.z});
-        // console.log($("#"+message.imgid));
-      }
-      else {
-            var dropped = $("#"+message.imgid);
-			$("#"+message.related).append(dropped);
-			var newtop = message.position.top-dropped.parent().offset().top;
-			var newleft = message.position.left-dropped.parent().offset().left;
-              dropped.css({top:newtop,left:newleft,zIndex:message.position.z});
-      //         setTimeout(function() {
-      //           $("#"+message.imgid).draggable('destroy'); 
-      // 
-      //           $("#"+message.imgid).draggable({
-      //             stack: "img",
-      //             drag: $.throttle(100, sendDragMessage),
-      //             snap: false,
-      //             snapmode: "outer"
-      //           });
-      //         },1);
+        zindex = message.position.z;
+      } else {
+        var dropped = $("#"+message.imgid);
+  			$("#"+message.related).append(dropped);
+  			var newtop = message.position.top-dropped.parent().offset().top;
+  			var newleft = message.position.left-dropped.parent().offset().left;
+        dropped.css({top:newtop,left:newleft,zIndex:message.position.z});
+
+        setTimeout(function() {
+          $("#"+message.imgid).draggable('destroy'); 
+        
+          $("#"+message.imgid).draggable({
+            drag: $.throttle(100, sendDragMessage),
+            snap: false,
+            snapmode: "outer"
+          });
+        },1);
       }
     }
 
     var socket = io.connect('/');
-    socket.on('msg', function (data) {
-      onMessage(data);
-      // console.log(data);
-      // TODO: Do stuff.
-    });
+    socket.on('msg', onMessage);
     
+    $('document').ready(function() {
+      $.ajax({
+    	  url: 'init.json',
+    	  dataType: 'json',
+    	  success: bootstrap
+	    });
+    });
+
+    function bootstrap(data) {
+      for (var i = 0; i < data.diningDeck.length; i++) {
+  	    images.push(new Image());
+	      images[i].src = "_img/"+data.diningDeck[i];
+	      images[i].width = "220";
+	      images[i].height = "165";
+	      images[i].style.top = Math.floor(Math.random() * 98) + 325 + "px";
+	      images[i].style.left = Math.floor(Math.random() * 1000) + "px";
+	      images[i].style.zIndex = i+1;
+	      images[i].id = "img"+i;
+
+	      $('#container').append(images[i]);
+	      zindex = i+1;
+  	  }
+
+      $('img').on('dragstart', function(event, ui) {
+        zindex++;
+        ui.helper.css("zIndex", zindex);
+      });
+
+  		$("#container > img").draggable({
+  	      drag: $.throttle(100, sendDragMessage),
+  	      snap: false,
+  	      snapmode: "outer"
+	    });
+    }
+
     </script>
 
 </body>
