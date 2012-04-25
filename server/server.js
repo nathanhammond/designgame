@@ -1,21 +1,16 @@
-var app = require('http').createServer(handler)
-  , io = require('socket.io').listen(app)
-  , fs = require('fs')
+var http = require('http');
+var fs = require('fs');
+var connect = require('connect');
 
-app.listen(8080);
+var server = http.createServer(
+		connect()
+			.use(connect.static('../client'))
+			.use(connect.directory('../client'))
+	);
 
-function handler (req, res) {
-  fs.readFile(__dirname + '/index.html',
-  function (err, data) {
-    if (err) {
-      res.writeHead(500);
-      return res.end('Error loading index.html');
-    }
+var io = require('socket.io').listen(server);
 
-    res.writeHead(200);
-    res.end(data);
-  });
-}
+server.listen(80);
 
 io.sockets.on('connection', function (socket) {
   socket.on('msg', function (data) {

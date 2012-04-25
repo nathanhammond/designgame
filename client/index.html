@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="_css/style.css">
   <link rel="stylesheet" href="_css/screen.css">
   <script src="_js/modernizr-2.5.3.min.js"></script>
-  <script src="http://localhost:8080/socket.io/socket.io.js"></script>
+  <script src="socket.io/socket.io.js"></script>
 </head>
 <body>
   <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
@@ -137,7 +137,7 @@
       console.log(arguments);
     }
 
-    var socket = io.connect('http://localhost:8080');
+    var socket = io.connect('/');
     socket.on('msg', function (data) {
       console.log(data);
       // TODO: Do stuff.
