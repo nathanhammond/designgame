@@ -3,119 +3,119 @@
 	cardDeck: dining //or study
 }
 dining = {
-    'images' : new Array();
+    'images' : ["A%20Hokie%20Passport%20transaction.JPG",
+        "Booth%20seat%20@%20red%20robin.jpg",
+        "Caf%20Radford%20University%20Drinks.JPG",
+        "Condiment%20stand%20D2.JPG",
+        "D2%20Waiting%20in%20line%20to%20order.JPG",
+        "Decorations.JPG",
+        "Employee%20handing%20the%20plate%20over.JPG",
+        "Employee%20putting%20food%20onto%20plate.JPG",
+        "Employees%20at%20D2.JPG",
+        "Escaping%20the%20crowd.JPG",
+        "Food%20at%20D2.JPG",
+        "HU.jpg",
+        "Looking%20for%20a%20table%20at%20D2.JPG",
+        "McDonals%20tile%20floor%20and%20counter.bmp",
+        "Out%20of%20order%20Ice%20cream%20D2.JPG",
+        "Owens%20%20signage.jpeg",
+        "Radford%20Cafe.JPG",
+        "Resturant%20counter%20inside%20student%20center%20display%20case.bmp",
+        "Sehar's%20Birthday%20party.jpeg",
+        "Serving%20food.JPG",
+        "Soda%20Machine%20D2.JPG",
+        "atm.jpeg",
+        "bag%20station.jpeg",
+        "bread%20pudding%20cake.JPG",
+        "chit%20chat.JPG",
+        "deets%20-%20hand%20sanitizer.jpeg",
+        "deets%20coffee.jpeg",
+        "drink%20machine%20+%20utensils%20stand.jpeg",
+        "eating%20food.JPG",
+        "fire%20exit.jpeg",
+        "gingerbread%20house%20decorations.JPG",
+        "green%20Fruit%20bowl%20banana%20apple%20orange2.bmp",
+        "holding%20a%20dish.JPG",
+        "indoor%20hallway%20of%20squires.jpg",
+        "large%20rock%20coast%20green%20brown%20Grass%20Picnic%20tables.bmp",
+        "outdoor%20tables%20and%20chairs.jpeg",
+        "owens%20dining%20area%20-%20tv.jpeg",
+        "owens%20dining%20area%20wall%20art.jpeg",
+        "owens%20dining%20area.jpeg",
+        "owens%20drink%20station.jpeg",
+        "owens%20trash%20pickup.jpeg",
+        "paying%20to%20eat.JPG",
+        "people%20talking%20leisurely.JPG",
+        "pointing%20at%20what%20she%20wants.JPG",
+        "safety%20and%20handicap%20accessible.jpeg",
+        "salad%20bar.jpeg",
+        "searching%20for%20friends.JPG",
+        "silverware%20D2.JPG",
+        "sort%20178.jpg",
+        "sort%20205.jpg",
+        "squires%20crowded.jpg",
+        "squires%20eating%20space.jpg",
+        "squires%20outdoor%20closeup.jpg",
+        "squires%20outdoor%20tables%20and%20chairs.jpg",
+        "statue.JPG",
+        "thirsty.JPG",
+        "toppings.JPG",
+        "utensils%20stand.jpg",
+        "waiting%20for%20employees%20to%20serve.JPG",
+        "wall%20tv.JPG",
+        "watching%20as%20he%20takes%20plates%20over%20to%20dish%20place.JPG"]
 }
-dining.images.push("A%20Hokie%20Passport%20transaction.JPG");
-dining.images.push("Booth%20seat%20@%20red%20robin.jpg");
-dining.images.push("Caf%20Radford%20University%20Drinks.JPG");
-dining.images.push("Condiment%20stand%20D2.JPG");
-dining.images.push("D2%20Waiting%20in%20line%20to%20order.JPG");
-dining.images.push("Decorations.JPG");
-dining.images.push("Employee%20handing%20the%20plate%20over.JPG");
-dining.images.push("Employee%20putting%20food%20onto%20plate.JPG");
-dining.images.push("Employees%20at%20D2.JPG");
-dining.images.push("Escaping%20the%20crowd.JPG");
-dining.images.push("Food%20at%20D2.JPG");
-dining.images.push("HU.jpg");
-dining.images.push("Looking%20for%20a%20table%20at%20D2.JPG");
-dining.images.push("McDonals%20tile%20floor%20and%20counter.bmp");
-dining.images.push("Out%20of%20order%20Ice%20cream%20D2.JPG");
-dining.images.push("Owens%20%20signage.jpeg");
-dining.images.push("Radford%20Cafe.JPG");
-dining.images.push("Resturant%20counter%20inside%20student%20center%20display%20case.bmp");
-dining.images.push("Sehar's%20Birthday%20party.jpeg");
-dining.images.push("Serving%20food.JPG");
-dining.images.push("Soda%20Machine%20D2.JPG");
-dining.images.push("atm.jpeg");
-dining.images.push("bag%20station.jpeg");
-dining.images.push("bread%20pudding%20cake.JPG");
-dining.images.push("chit%20chat.JPG");
-dining.images.push("deets%20-%20hand%20sanitizer.jpeg");
-dining.images.push("deets%20coffee.jpeg");
-dining.images.push("drink%20machine%20+%20utensils%20stand.jpeg");
-dining.images.push("eating%20food.JPG");
-dining.images.push("fire%20exit.jpeg");
-dining.images.push("gingerbread%20house%20decorations.JPG");
-dining.images.push("green%20Fruit%20bowl%20banana%20apple%20orange2.bmp");
-dining.images.push("holding%20a%20dish.JPG");
-dining.images.push("indoor%20hallway%20of%20squires.jpg");
-dining.images.push("large%20rock%20coast%20green%20brown%20Grass%20Picnic%20tables.bmp");
-dining.images.push("outdoor%20tables%20and%20chairs.jpeg");
-dining.images.push("owens%20dining%20area%20-%20tv.jpeg");
-dining.images.push("owens%20dining%20area%20wall%20art.jpeg");
-dining.images.push("owens%20dining%20area.jpeg");
-dining.images.push("owens%20drink%20station.jpeg");
-dining.images.push("owens%20trash%20pickup.jpeg");
-dining.images.push("paying%20to%20eat.JPG");
-dining.images.push("people%20talking%20leisurely.JPG");
-dining.images.push("pointing%20at%20what%20she%20wants.JPG");
-dining.images.push("safety%20and%20handicap%20accessible.jpeg");
-dining.images.push("salad%20bar.jpeg");
-dining.images.push("searching%20for%20friends.JPG");
-dining.images.push("silverware%20D2.JPG");
-dining.images.push("sort%20178.jpg");
-dining.images.push("sort%20205.jpg");
-dining.images.push("squires%20crowded.jpg");
-dining.images.push("squires%20eating%20space.jpg");
-dining.images.push("squires%20outdoor%20closeup.jpg");
-dining.images.push("squires%20outdoor%20tables%20and%20chairs.jpg");
-dining.images.push("statue.JPG");
-dining.images.push("thirsty.JPG");
-dining.images.push("toppings.JPG");
-dining.images.push("utensils%20stand.jpg");
-dining.images.push("waiting%20for%20employees%20to%20serve.JPG");
-dining.images.push("wall%20tv.JPG");
-dining.images.push("watching%20as%20he%20takes%20plates%20over%20to%20dish%20place.JPG");
+;
 
 study = {
-    'images' : new Array();
+    'images' : ["Brown%20and%20cream%20sofa%20with%20red%20pillows.JPG",
+        "Crowded%20table.JPG",
+        "DC%20study%202.jpg",
+        "DC%20study%202a.jpg",
+        "DC%20study%20a.jpg",
+        "Desk%20outlets%202.JPG",
+        "Desk%20outlets.JPG",
+        "Full%20wall%20whiteboard.JPG",
+        "Hotel%20Computer%20station.JPG",
+        "Messy%20desk%20facing%20window%20sunlight.bmp",
+        "Printer.JPG",
+        "Smartboard.JPG",
+        "Solitary%20studying.JPG",
+        "bench%20studying%20(1).jpeg",
+        "bench%20studying.jpeg",
+        "brownie%20bowl%20with%20brown%20candles%20on%20wood%20dresser.bmp",
+        "chaise%20longue%20fire%20place,%20tall%20windows,%20white%20mantal%20green%20iron%20dining%20chair.bmp",
+        "couch.JPG",
+        "couches%20study%20space.jpg",
+        "couches%20studying.jpg",
+        "deets%20coffee%20studying%202.jpeg",
+        "deets%20coffee%20studying.jpeg",
+        "hahn%20conference%20room.jpeg",
+        "hahn.jpeg",
+        "inconvenient%20outlet.JPG",
+        "is%20it%20comfortable.JPG",
+        "knowledge%20works%20pavilion.jpeg",
+        "knowledge%20works%20study.jpeg",
+        "lack%20of%20seating.JPG",
+        "lack%20of%20study%20desks%20near%20classroom.JPG",
+        "litton%20reeves%20lights.JPG",
+        "lockers.JPG",
+        "office%20chair.JPG",
+        "power%20strip.JPG",
+        "projector%20screen.jpg",
+        "projector.jpg",
+        "recycle%20bottles.JPG",
+        "recycling.JPG",
+        "sitting%20area.JPG",
+        "study%20desks.JPG",
+        "study%20hallway%20in%20Davidson.jpeg",
+        "study%20lounge.jpg",
+        "study%20while%20eating.JPG",
+        "study%20with%20a%20fireplace.jpg",
+        "study%20with%20a%20kitchen.jpg",
+        "studying%20through%20glass%203.jpeg",
+        "studying%20through%20glass.jpeg",
+        "table%20focus%20-%20davidson%20hall.jpeg",
+        "wall%20tv.JPG"]
 }
-study.images.push("Brown%20and%20cream%20sofa%20with%20red%20pillows.JPG");
-study.images.push("Crowded%20table.JPG");
-study.images.push("DC%20study%202.jpg");
-study.images.push("DC%20study%202a.jpg");
-study.images.push("DC%20study%20a.jpg");
-study.images.push("Desk%20outlets%202.JPG");
-study.images.push("Desk%20outlets.JPG");
-study.images.push("Full%20wall%20whiteboard.JPG");
-study.images.push("Hotel%20Computer%20station.JPG");
-study.images.push("Messy%20desk%20facing%20window%20sunlight.bmp");
-study.images.push("Printer.JPG");
-study.images.push("Smartboard.JPG");
-study.images.push("Solitary%20studying.JPG");
-study.images.push("bench%20studying%20(1).jpeg");
-study.images.push("bench%20studying.jpeg");
-study.images.push("brownie%20bowl%20with%20brown%20candles%20on%20wood%20dresser.bmp");
-study.images.push("chaise%20longue%20fire%20place,%20tall%20windows,%20white%20mantal%20green%20iron%20dining%20chair.bmp");
-study.images.push("couch.JPG");
-study.images.push("couches%20study%20space.jpg");
-study.images.push("couches%20studying.jpg");
-study.images.push("deets%20coffee%20studying%202.jpeg");
-study.images.push("deets%20coffee%20studying.jpeg");
-study.images.push("hahn%20conference%20room.jpeg");
-study.images.push("hahn.jpeg");
-study.images.push("inconvenient%20outlet.JPG");
-study.images.push("is%20it%20comfortable.JPG");
-study.images.push("knowledge%20works%20pavilion.jpeg");
-study.images.push("knowledge%20works%20study.jpeg");
-study.images.push("lack%20of%20seating.JPG");
-study.images.push("lack%20of%20study%20desks%20near%20classroom.JPG");
-study.images.push("litton%20reeves%20lights.JPG");
-study.images.push("lockers.JPG");
-study.images.push("office%20chair.JPG");
-study.images.push("power%20strip.JPG");
-study.images.push("projector%20screen.jpg");
-study.images.push("projector.jpg");
-study.images.push("recycle%20bottles.JPG");
-study.images.push("recycling.JPG");
-study.images.push("sitting%20area.JPG");
-study.images.push("study%20desks.JPG");
-study.images.push("study%20hallway%20in%20Davidson.jpeg");
-study.images.push("study%20lounge.jpg");
-study.images.push("study%20while%20eating.JPG");
-study.images.push("study%20with%20a%20fireplace.jpg");
-study.images.push("study%20with%20a%20kitchen.jpg");
-study.images.push("studying%20through%20glass%203.jpeg");
-study.images.push("studying%20through%20glass.jpeg");
-study.images.push("table%20focus%20-%20davidson%20hall.jpeg");
-study.images.push("wall%20tv.JPG");
+
