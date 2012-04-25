@@ -38,10 +38,13 @@
 
   <script>
     var images = [];
+	console.log('before getJSON');
 	$.getJSON('init.json', function(data) {
-		for (var i = 0; i < images.length; i++) {
+		console.log('got callback from loaded json');
+		for (var i = 0; i < data.diningDeck.length; i++) {
 	      images.push(new Image());
-	      images[i].src = data.cardDeck.images[i];
+	      images[i].src = data.diningDeck[i];
+	      console.log(data.diningDeck[i]);
 	      images[i].width = "50";
 	      images[i].height = "50";
 	      images[i].style.top = Math.floor(Math.random() * 98) + 150 + "px";
