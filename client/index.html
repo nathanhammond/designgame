@@ -47,12 +47,19 @@
 	      images[i].src = "_img/"+data.diningDeck[i];
 	      images[i].width = "220";
 	      images[i].height = "165";
-	      images[i].style.top = Math.floor(Math.random() * 98) + 150 + "px";
-	      images[i].style.left = Math.floor(Math.random() * 800) + "px";
+	      images[i].style.top = Math.floor(Math.random() * 98) + 450 + "px";
+	      images[i].style.left = Math.floor(Math.random() * 1200) + "px";
 	      images[i].id = "img"+i;
 
 	      $('#container').append(images[i]);
 	    }
+		$("#container > img").draggable({
+	      stack: "img",
+	      drag: $.throttle(100, sendDragMessage),
+	      snap: false,
+	      snapmode: "outer"
+	    });
+		console.log("completed img load");
 	  },
 	  error: function(data){
 		console.log(arguments);
@@ -60,12 +67,7 @@
 	});
     
     
-    $("#container > img").draggable({
-      stack: "img",
-      drag: $.throttle(100, sendDragMessage),
-      snap: false,
-      snapmode: "outer"
-    });
+    
     
     $("#board").droppable({
       tolerance: "fit",
